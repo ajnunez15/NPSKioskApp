@@ -27,6 +27,13 @@ statesAbbrev = ["AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL"
                 "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PA", "PR", "RI", "SC",
                 "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY"]
 
+def handler400(request):
+    form = HomeForm
+    context = {
+        'form': form
+    }
+    return render(request, 'Errors/400.html', context, status=400)
+
 def handler404(request, exception):
     form = HomeForm
     context = {

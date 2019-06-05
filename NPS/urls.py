@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('NPSKiosk.urls')),
 ]
 
+handler400 = 'NPSKiosk.views.handler400'
 handler404 = 'NPSKiosk.views.handler404'
 handler500 = 'NPSKiosk.views.handler500'
