@@ -15,9 +15,8 @@ places = None
 visitorCenters = None
 
 api_token = os.getenv("APIKEY")
-headers = {'X-Api-Key': api_token,
-           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
-           }
+headers = {'X-Api-Key': api_token}
+#'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
 
 
 def getAlerts(alerts):
