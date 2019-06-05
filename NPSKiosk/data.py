@@ -15,7 +15,7 @@ places = None
 visitorCenters = None
 
 api_token = os.getenv("APIKEY")
-headers = {'X-Api-Key': api_token}
+headers = {'X-Api-Key': 'MyPmNS3xdwQqpxAg06vAiayErPygtPHm94HDcCje'}
 
 def getAlerts(alerts):
     if(alerts is None):

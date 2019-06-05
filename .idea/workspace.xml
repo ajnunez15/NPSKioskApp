@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a1502b9-d440-4482-9f7a-32ec17a98cef" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-    </list>
+    <list default="true" id="5a1502b9-d440-4482-9f7a-32ec17a98cef" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,11 +23,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/NPSKiosk/data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,6 +108,11 @@
               <item name="NPS" type="b2602c69:ProjectViewProjectNode" />
               <item name="NPS" type="462c0819:PsiDirectoryNode" />
               <item name="NPS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NPS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NPS" type="462c0819:PsiDirectoryNode" />
+              <item name="NPSKiosk" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -198,6 +212,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NPSKiosk/data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
