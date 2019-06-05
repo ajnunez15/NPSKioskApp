@@ -26,7 +26,7 @@ SECRET_KEY = '9mn0f#c!i#*i$&#bk%vxslga)xqw_gq)+c%+o5ns9rgdj9oxe3'
 DEBUG = True
 
 #ALLOWED_HOSTS = ['https://npskiosk.herokuapp.com', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.herokuapp.com']
 
 # Application definition
 
