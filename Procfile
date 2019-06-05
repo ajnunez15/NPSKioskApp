@@ -1,1 +1,1 @@
-web: gunicorn NPS.NPS.wsgi.py
+web: gunicorn NPS.wsgi
