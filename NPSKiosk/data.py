@@ -15,7 +15,7 @@ places = None
 visitorCenters = None
 
 api_token = os.getenv("APIKEY")
-headers = {'X-Api-Key': 'MyPmNS3xdwQqpxAg06vAiayErPygtPHm94HDcCje'}
+headers = {'X-Api-Key': api_token}
 
 def getAlerts(alerts):
     if(alerts is None):
@@ -202,7 +202,7 @@ def getParks(parks):
     if (parks is None):
         api_url_base = 'https://developer.nps.gov/api/v1/parks'
         response = requests.get(api_url_base, headers=headers)
-
+        print(response)
         if (response.status_code == 200):
             return json.loads(response.content.decode('utf-8'))
         else:
