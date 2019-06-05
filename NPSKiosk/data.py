@@ -14,7 +14,7 @@ people = None
 places = None
 visitorCenters = None
 
-#api_token = os.getenv("APIKEY")
+#api_token = os.getenv("APIKEY") reads APIKEY from .env locally
 api_token = os.environ['APIKEY']
 print(api_token)
 headers = {'X-Api-Key': api_token}
