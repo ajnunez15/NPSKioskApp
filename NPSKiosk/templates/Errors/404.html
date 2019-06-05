@@ -1,0 +1,50 @@
+{% extends "NPSKiosk/base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="ColumnGrid" style="margin-left: -10px;margin-right: -10px;">
+        <div class="ColumnMain col-sm-12">
+            <div class="Breadcrumbs" style="width:auto; min-width:768px;margin-right:auto;margin-left:auto;padding-left:10px;padding-right:10px;">
+                <div class="row">
+                    <div class="col-sm-12"></div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title" style="margin-left: 15px;border-bottom:1px dotted #dddddd"></div>
+
+            <div class="row">
+                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                    <br><br>
+                    <div style="margin: 0px 0px 0 0px;padding-top: 0px;">
+                        <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                            <div id="parkListResults" style="background:#FFFFFF;margin-top:20px;">
+                                <div id="parkListResultsArea">
+                                    <ul id="list_parks" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h3 style="font-size:75px; position:center">Error 404:</h3>
+                                                <h3 style="font-size:75px; position:center">Page Not Found</h3><p></p><p></p><p></p>
+                                                <h3><a href="{% url 'NPS-Home' %}" >
+                                                    The page you are looking for is not found. Please return home.
+                                                </a></h3>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,390 @@
+{% extends "NPSKiosk/base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="ColumnGrid" style="margin-left: -10px;margin-right: -10px;">
+        <div class="ColumnMain col-sm-12">
+            <div class="Breadcrumbs" style="width:auto; min-width:768px;margin-right:auto;margin-left:auto;padding-left:10px;padding-right:10px;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <article><a href="{% url 'NPS-Home' %}">NPS Kiosk</a> / Destination / {{ destParkData.fullName }}</article>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title" style="margin-left: 15px;border-bottom:1px dotted #dddddd">
+                <h1 style="font-family: Georgia,Times,Times New Roman,serif!important;line-height: 1.3;margin-top: 20px;font-size: 300.5%;">Data Found</h1>
+                <a href="#alerts"><h6>Alerts Found: {{ destAlerts.total }}</h6></a>
+                <a href="#articles"><h6>Articles Found: {{ destArticles.total }}</h6></a>
+                <a href="#events"><h6>Events Found: {{ destEvents.total }}</h6></a>
+                <a href="#newsreleases"><h6>News Releases Found: {{ destNewsreleases.total }}</h6></a>
+                <p>------------------------------------------</p>
+                <h6>Education Info: </h6>
+                <a href="#lessons"><h6>Lessons Available: {{ destLessonplans.total }} </h6></a>
+                <a href="#notablepeople"><h6>Associated Notable People: {{ destPeople.total }}</h6></a>
+                <a href="#places"><h6>Associated Places: {{ destPlaces.total }} </h6></a>
+            </div>
+
+            <!------------------------------------------------Alert Results-------------------------------------------------------------->
+            <div class="row">
+                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                    <br><br>
+                    <div style="margin: 0px 0px 0 0px;padding-top: 0px;">
+                        <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                            <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
+                                <a name="alerts"></a>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Alerts Found For "{{ destParkData.fullName }}": {{ destAlerts.total }} </h3>
+                            </div>
+                            <div id="alertListResults" style="background:#FFFFFF;margin-top:20px;">
+                                <div id="alertListResultsArea">
+                                    <ul id="list_alert" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+                                        {% if destAlerts.data is not None %}
+                                        {% for alert in destAlerts.data %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
+                                                    Category: {{ alert.category }}
+                                                </h2>
+                                                <h3 style="color:blue">{{ alert.title }}</h3>
+                                                <h6>{{ alert.url }}</h6>
+                                                <p>ID: {{ alert.id }}</p>
+                                                <h5>
+                                                    {{ alert.description }}
+                                                </h5>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        {% else %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h3><a href="{% url 'NPS-Home' %}" >No Alerts Posted.</a></h3>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------------------------------------Article Results-------------------------------------------------------------->
+            <div class="row">
+                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                    <br><br>
+                    <div style="margin: 0px 0px 0 0px;padding-top: 0px;">
+                        <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                            <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
+                                <a name="articles"></a>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Articles Found For "{{ destParkData.fullName }}": {{ destAlerts.total }} </h3>
+                            </div>
+                            <div id="articleListResults" style="background:#FFFFFF;margin-top:20px;">
+                                <div id="articleListResultsArea">
+                                    <ul id="list_article" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+                                        {% if destArticles.data is not None %}
+                                        {% for article in destArticles.data %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
+                                                {% if article.relatedParks is not empty %}
+                                                <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
+                                                    Related Parks: {{ article.relatedParks }}
+                                                </h2>
+                                                {% endif %}
+                                                <h3 style="color:blue">{{ article.title }}</h3>
+                                                <h6 style="color:green">{{ article.url }}</h6>
+                                                <p>ID: {{ article.id }}</p>
+                                                <h5>
+                                                    {{ article.listingdescription }}
+                                                </h5>
+                                                <p></p>
+                                                <img src="{{ article.listingimage.url }}" style="max-width:50%">
+                                                <p>{{ article.listingimage.altText }}</p>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        {% else %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h3><a href="{% url 'NPS-Home' %}" >No Article Search Results Were Found.</a></h3>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------------------------------------Event Results-------------------------------------------------------------->
+            <div class="row">
+                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                    <br><br>
+                    <div style="margin: 0px 0px 0 0px;padding-top: 0px;">
+                        <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                            <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
+                                <a name="events"></a>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Events Found For "{{ destParkData.fullName }}": {{ destEvents.total }} </h3>
+                            </div>
+                            <div id="eventListResults" style="background:#FFFFFF;margin-top:20px;">
+                                <div id="eventListResultsArea">
+                                    <ul id="list_event" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+                                        {% if destEvents.data is not None %}
+                                        {% for event in destEvents.data %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
+                                                    Category: {{ event.category }}
+                                                </h2>
+                                                <h5>
+                                                    Park: {{ event.parkfullname }}
+                                                </h5>
+                                                <h3 style="color:blue">{{ event.title }}</h3>
+                                                <h6 style="color:green">ID: {{ event.id }}</h6>
+                                                {% if event.tags is not empty %}
+                                                    <h6 style="color:green">Tags: {{event.tags}}</h6> <p></p>
+                                                {% endif %}
+                                                <h6>{{ event.contactname }}</h6>
+                                                <h6>{{ event.contacttelephonenumber }}</h6>
+                                                {% for time in event.times %}
+                                                    <h6 style="color:red">Next Event: {{ event.date }} @ {{ time.timestart }}</h6>
+                                                {% endfor %}
+
+                                                {% if event.location is not empty %}
+                                                    <h6 style="color:red">Location: {{ event.location }}</h6>
+                                                {% endif %}
+
+                                                {% if event.info is not empty %}
+                                                    <h6 style="color:red">Fee Info: {{event.feeInfo}}</h6>
+                                                {% endif %}
+
+                                                {% if event.isfree is not empty %}
+                                                    <h6 style="color:red">Event is free: {{event.isfree}}</h6>
+                                                {% endif %}
+                                                <h5>
+                                                    {{ event.description }}
+                                                </h5>
+                                                <img src="{{ event.images.url }}" style="max-width:50%">
+                                                <p>{{ event.images.altText }}</p>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        {% else %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h3><a href="{% url 'NPS-Home' %}" >No Event Search Results Were Found.</a></h3>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!------------------------------------------------News Release Results-------------------------------------------------------------->
+            <div class="row">
+                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                    <br><br>
+                    <div style="margin: 0px 0px 0 0px;padding-top: 0px;">
+                        <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                            <div class="newsreleaseParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
+                                <a name="newsreleases"></a>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> News Releases Found For "{{ destParkData.fullName }}": {{ destNewsreleases.total }} </h3>
+                            </div>
+                            <div id="newsreleaseListResults" style="background:#FFFFFF;margin-top:20px;">
+                                <div id="newsreleaseListResultsArea">
+                                    <ul id="list_newsrelease" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+                                        {% if destNewsreleases.data is not None %}
+                                        {% for newsrelease in destNewsreleases.data %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h3><a href="{{ newsrelease.url }}" id="anch_5">{{ newsrelease.title }}</a></h3>
+                                                <h6 style="color:green">{{ newsrelease.url }}</h6>
+                                                <p>ID: {{ newsrelease.id }}</p>
+                                                <h5>
+                                                    {{ newsrelease.abstract }}
+                                                </h5>
+                                                <img src="{{ newsrelease.image.url }}" style="max-width:50%">
+                                                {% if newsrelease.image.credit is not empty %}
+                                                    <p>{{ newsrelease.image.caption }}   -    {{ newsrelease.image.credit }}</p>
+                                                {% endif %}
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        {% else %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h3><a href="{% url 'NPS-Home' %}" >No News Releases Were Found.</a></h3>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title" style="margin-left: -75px;margin-top: 150px;border-bottom:3px dotted #dddddd;">
+                <p></p><p></p>
+                <h1 style="font-family: Georgia,Times,Times New Roman,serif!important;line-height: 1.3;margin-top: 20px;font-size: 300.5%;">Education</h1>
+            </div>
+
+            <!------------------------------------------------Lesson Plan Results-------------------------------------------------------------->
+            <div class="row">
+                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                    <br><br>
+                    <div style="margin: 0px 0px 0 0px;padding-top: 0px;">
+                        <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                            <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
+                                <a name="lesson"></a>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Lesson Plans Found For "{{ destParkData.fullName }}": {{ destLessonplans.total }} </h3>
+                            </div>
+                            <div id="lessonplanListResults" style="background:#FFFFFF;margin-top:20px;">
+                                <div id="lessonplanListResultsArea">
+                                    <ul id="list_lessonplan" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+                                        {% if destLessonplans.data is not None %}
+                                        {% for lessonplan in destLessonplans.data %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
+                                                    ID: {{ lessonplan.id }}
+                                                </h2>
+                                                <h5>
+                                                    {{ lessonplan.gradelevel }}
+                                                </h5>
+                                                <h5>Subject: {{ lessonplan.subject }}</h5>
+                                                <h3 style="color:blue">{{ lessonplan.title }}</h3>
+                                                <h6 style="color:green">{{ lessonplan.url }}</h6>
+                                                <h5>
+                                                    {{ lessonplan.questionobjective}}
+                                                </h5>
+                                                <h6 style="color:red">Duration: {{ lessonplan.duration }}</h6>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        {% else %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h3><a href="{% url 'NPS-Home' %}" >No Lesson Plans Were Found.</a></h3>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!------------------------------------------------People Results-------------------------------------------------------------->
+            <div class="row">
+                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                    <br><br>
+                    <div style="margin: 0px 0px 0 0px;padding-top: 0px;">
+                        <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                            <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
+                                <a name="notablepeople"></a>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;">Some Notable People Associated With "{{ destParkData.fullName }}": {{ destPeople.total }} </h3>
+                            </div>
+                            <div id="peopleListResults" style="background:#FFFFFF;margin-top:20px;">
+                                <div id="peopleListResultsArea">
+                                    <ul id="list_people" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+                                        {% if destPeople.data is not None %}
+                                        {% for person in destPeople.data %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
+                                                    ID: {{ person.id }}
+                                                </h2>
+                                                <h3 style="color:blue">{{ person.title }}</h3>
+                                                <h6 style="color:green">{{ person.url }}</h6>
+                                                <h5>
+                                                    {{ person.listingdescription }}
+                                                </h5>
+                                                <img src="{{ person.listingimage.url }}" style="max-width:50%">
+                                                <p>{{ person.listingimage.altText }}</p>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        {% else %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h3><a href="{% url 'NPS-Home' %}" >No Notable People Were Found.</a></h3>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------------------------------------Place Results-------------------------------------------------------------->
+            <div class="row">
+                <div class="col-sm-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                    <br><br>
+                    <div style="margin: 0px 0px 0 0px;padding-top: 0px;">
+                        <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
+                            <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
+                                <a name="places"></a>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;">Associated Places With "{{ destParkData.fullName }}": {{ destPlaces.total }} </h3>
+                            </div>
+                            <div id="placeListResults" style="background:#FFFFFF;margin-top:20px;">
+                                <div id="placeListResultsArea">
+                                    <ul id="list_places" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
+                                        {% if destPlaces.data is not None %}
+                                        {% for place in destPlaces.data %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
+                                                    ID: {{ place.id }}
+                                                </h2>
+                                                <h3 style="color:blue">{{ place.title }}</h3>
+                                                <h6 style="color:green">{{ place.url }}</h6>
+                                                <h5>
+                                                    {{ place.listingdescription }}
+                                                </h5>
+                                                <img src="{{ place.listingimage.url }}" style="max-width:50%">
+                                                <p>{{ place.listingimage.altText }}</p>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        {% else %}
+                                        <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
+                                                <h3><a href="{% url 'NPS-Home' %}" >No Place Were Found.</a></h3>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
