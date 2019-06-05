@@ -205,6 +205,10 @@ def getParks(parks):
         api_url_base = 'https://developer.nps.gov/api/v1/parks'
         response = requests.get(api_url_base, headers=headers)
         print(response)
+        print(response.status_code)
+        print(response.headers)
+        print(response.encoding)
+        print(response.text)
         if (response.status_code == 200):
             return json.loads(response.content.decode('utf-8'))
         else:

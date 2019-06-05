@@ -43,7 +43,7 @@ def handler500(request):
 
 def home(request):
     form = HomeForm()
-    print("Total Parks: ", parks['total'], parks['limit'])
+    #print("Total Parks: ", parks['total'], parks['limit'])
     parksData = parks['data']
 
     #Oddly when retrieving data from the api by state, we are only given a list of 51 parks.
