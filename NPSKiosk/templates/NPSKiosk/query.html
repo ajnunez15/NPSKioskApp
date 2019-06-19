@@ -21,16 +21,16 @@
 
             <div class="title" style="margin-left: 15px;border-bottom:1px dotted #dddddd">
                 <h1 style="font-family: Georgia,Times,Times New Roman,serif!important;line-height: 1.3;margin-top: 20px;font-size: 300.5%;">Search Results</h1>
-                <a href="#alerts"><h6>Alerts Found: {{ totalSearchAlerts }}</h6></a>
-                <a href="#articles"><h6>Articles Found: {{ totalSearchArticles }}</h6></a>
-                <a href="#campgrounds"><h6>Campgrounds Found: {{ totalSearchCampgrounds }}</h6></a>
-                <a href="#events"><h6>Events Found: {{ totalSearchEvents }}</h6></a>
-                <a href="#lessonplans"><h6>Lesson Plans Found: {{ totalSearchLessonplans }}</h6></a>
-                <a href="#newsreleases"><h6>News Releases Found: {{ totalSearchNewsreleases }}</h6></a>
-                <a href="#parks"><h6>Parks Found: {{ totalSearchParks }}</h6></a>
-                <a href="#people"><h6>People Found: {{ totalSearchPeople }}</h6></a>
-                <a href="#places"><h6>Places Found: {{ totalSearchPlaces }}</h6></a>
-                <a href="#visitorcenters"><h6>Visitor Centers Found: {{ totalSearchVisitorcenters }}</h6></a>
+                <a href="#alerts"><h6>Alerts Found: {{ alertResults.total }}</h6></a>
+                <a href="#articles"><h6>Articles Found: {{ articleResults.total }}</h6></a>
+                <a href="#campgrounds"><h6>Campgrounds Found: {{ campgroundResults.total }}</h6></a>
+                <a href="#events"><h6>Events Found: {{ eventResults.total }}</h6></a>
+                <a href="#lessonplans"><h6>Lesson Plans Found: {{ lessonplanResults.total }}</h6></a>
+                <a href="#newsreleases"><h6>News Releases Found: {{ newsreleaseResults.total }}</h6></a>
+                <a href="#parks"><h6>Parks Found: {{ parkResults.total }}</h6></a>
+                <a href="#people"><h6>People Found: {{ peopleResults.total }}</h6></a>
+                <a href="#places"><h6>Places Found: {{ placeResults.total }}</h6></a>
+                <a href="#visitorcenters"><h6>Visitor Centers Found: {{ visitorcentersResults.total }}</h6></a>
             </div>
 
             <!------------------------------------------------Alert Results-------------------------------------------------------------->
@@ -41,13 +41,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="alerts"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Alerts Found For "{{ text }}": {{ totalSearchAlerts }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Alerts Found For "{{ text }}": {{ alertResults.total }} </h3>
                             </div>
                             <div id="alertListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="alertListResultsArea">
                                     <ul id="list_alert" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if alertSearchData is not None %}
-                                        {% for alert in alertSearchData %}
+                                        {% if alertResults.data is not None %}
+                                        {% for alert in alertResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
@@ -84,13 +84,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="articles"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Articles Found For "{{ text }}": {{ totalSearchArticles }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Articles Found For "{{ text }}": {{ articleResults.total }} </h3>
                             </div>
                             <div id="articleListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="articleListResultsArea">
                                     <ul id="list_article" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if articleSearchData is not None %}
-                                        {% for article in articleSearchData %}
+                                        {% if articleResults.data is not None %}
+                                        {% for article in articleResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
@@ -129,13 +129,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="campgrounds"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Campgrounds Found For "{{ text }}": {{ totalSearchCampgrounds }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Campgrounds Found For "{{ text }}": {{ campgroundResults.total }} </h3>
                             </div>
                             <div id="campgroundListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="campgroundListResultsArea">
                                     <ul id="list_campground" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if campgroundSearchData is not None %}
-                                        {% for campground in campgroundSearchData %}
+                                        {% if campgroundResults.data is not None %}
+                                        {% for campground in campgroundResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
@@ -179,7 +179,7 @@
                                         {% else %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
-                                                <h3><a href="{% url 'NPS-Home' %}" >No Article Search Results Were Found.</a></h3>
+                                                <h3><a href="{% url 'NPS-Home' %}" >No Campgrounds Found.</a></h3>
                                             </div>
                                         </li>
                                         {% endif %}
@@ -199,13 +199,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="events"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Events Found For "{{ text }}": {{ totalSearchEvents }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Events Found For "{{ text }}": {{ eventResults.total }} </h3>
                             </div>
                             <div id="eventListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="eventListResultsArea">
                                     <ul id="list_event" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if eventSearchData is not None %}
-                                        {% for event in eventSearchData %}
+                                        {% if eventResults.data is not None %}
+                                        {% for event in eventResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
@@ -246,13 +246,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="lessonplans"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Lesson Plans Found For "{{ text }}": {{ totalSearchLessonplans }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Lesson Plans Found For "{{ text }}": {{ lessonplanResults.total }} </h3>
                             </div>
                             <div id="lessonplanListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="lessonplanListResultsArea">
                                     <ul id="list_lessonplan" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if lessonplanSearchData is not None %}
-                                        {% for lessonplan in lessonplanSearchData %}
+                                        {% if lessonplanResults.data is not None %}
+                                        {% for lessonplan in lessonplanResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
@@ -292,13 +292,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="newsreleaseParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="newsreleases"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> News Releases Found For "{{ text }}": {{ totalSearchNewsreleases }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> News Releases Found For "{{ text }}": {{ newsreleaseResults.total }} </h3>
                             </div>
                             <div id="newsreleaseListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="newsreleaseListResultsArea">
                                     <ul id="list_newsrelease" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if newsreleaseSearchData is not None %}
-                                        {% for newsrelease in newsreleaseSearchData %}
+                                        {% if newsreleaseResults.data is not None %}
+                                        {% for newsrelease in newsreleaseResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 <h3><a href="{{ newsrelease.url }}" id="anch_5">{{ newsrelease.title }}</a></h3>
@@ -334,13 +334,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="parks"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Parks Found For "{{ text }}": {{ totalSearchParks }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Parks Found For "{{ text }}": {{ parkResults.total }} </h3>
                             </div>
                             <div id="parkListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="parkListResultsArea">
                                     <ul id="list_parks" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if parkSearchData is not None %}
-                                        {% for park in parkSearchData %}
+                                        {% if parkResults.data is not None %}
+                                        {% for park in parkResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 <h2 style="color:#000000;font-size: 15px;text-transform: uppercase;margin-bottom:0px;margin-top:0px;font-family: inherit;font-weight: 1000;line-height: 1.1;display: block;margin-block-start: 0.83em;margin-block-end: 0.83em;margin-inline-start: 0px;margin-inline-end: 0px;">
@@ -358,7 +358,7 @@
                                         {% else %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
-                                                <h3><a href="{% url 'NPS-Home' %}" >No Park Search Results Were Found.</a></h3>
+                                                <h3><a href="{% url 'NPS-Home' %}" >No Parks Were Found.</a></h3>
                                             </div>
                                         </li>
                                         {% endif %}
@@ -378,13 +378,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="people"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> People Found For "{{ text }}": {{ totalSearchPeople }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> People Found For "{{ text }}": {{ peopleResults.total }} </h3>
                             </div>
                             <div id="peopleListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="peopleListResultsArea">
                                     <ul id="list_people" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if peopleSearchData is not None %}
-                                        {% for person in peopleSearchData %}
+                                        {% if peopleResults.data is not None %}
+                                        {% for person in peopleResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 {% if person.relatedParks is not empty %}
@@ -425,13 +425,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="stateParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="places"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Places Found For "{{ text }}": {{ totalSearchPlaces }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Places Found For "{{ text }}": {{ placeResults.total }} </h3>
                             </div>
                             <div id="placeListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="placeListResultsArea">
                                     <ul id="list_places" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if placeSearchData is not None %}
-                                        {% for place in placeSearchData %}
+                                        {% if placeResults.data is not None %}
+                                        {% for place in placeResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 {% if person.relatedParks is not empty %}
@@ -452,7 +452,7 @@
                                         {% else %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:25px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:150px;@media(min-width:768px)width: 75%;float:center;position: relative;min-height: 1px;padding-right:10px;">
-                                                <h3><a href="{% url 'NPS-Home' %}" >No Place Were Found.</a></h3>
+                                                <h3><a href="{% url 'NPS-Home' %}" >No Places Were Found.</a></h3>
                                             </div>
                                         </li>
                                         {% endif %}
@@ -472,13 +472,13 @@
                         <div class="col-md-9 col-lg-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;width: 100%;float:left;position:relative">
                             <div class="visitorcenterParkList" style="background-color:#4b5e26;color:#fff;display:inline-block;font-size:1.375rem;font-family: Open Sans Condensed,sans-serif;font-weight:400;line-height:1;">
                                 <a name="visitorcenters"></a>
-                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Visitor Centers Found For "{{ text }}": {{ totalSearchVisitorcenters }} </h3>
+                                <h3 style="margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;"> Visitor Centers Found For "{{ text }}": {{ visitorcentersResults.total }} </h3>
                             </div>
                             <div id="visitorcenterListResults" style="background:#FFFFFF;margin-top:20px;">
                                 <div id="visitorcenterListResultsArea">
                                     <ul id="list_visitorcenters" style="margin-right:20px;margin-bottom:14px;padding-left:0px;list-style: none;margin-left: 0px;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;padding-inline-start: 40px;">
-                                        {% if visitorcenterSearchData is not None %}
-                                        {% for visitorcenter in visitorcenterSearchData %}
+                                        {% if visitorcentersResults.data is not None %}
+                                        {% for visitorcenter in visitorcentersResults.data %}
                                         <li class="clearfix" style="border-bottom: 1px solid #CCCCCC;padding: 17px 7px 23px 15px;margin-left: 3px;color: #000;font-family: Arial,sans-serif;font-weight: 400;line-height: 1.75;display: list-item;text-align: -webkit-match-parent;list-style: none;font-size:14px">
                                             <div class="col-md-9 col-sm-9 col-xs-12 table-cell list_left" style="display:table-cell;padding-left:0px;@media(min-width:768px)width: 75%;float:left;position: relative;min-height: 1px;padding-right:10px;">
                                                 {% if visitorcenter.url is not empty %}

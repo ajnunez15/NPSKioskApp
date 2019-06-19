@@ -2,7 +2,6 @@ import requests
 import json
 import os
 
-# Create your views here.
 alerts = None
 articles = None
 campgrounds = None
@@ -18,8 +17,6 @@ visitorCenters = None
 api_token = os.environ['APIKEY']
 print(api_token)
 headers = {'X-Api-Key': api_token}
-#'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
-
 
 def getAlerts(alerts):
     if(alerts is None):
@@ -42,6 +39,7 @@ def queryAlerts(queryString):
     else:
         print("Querying failed")
         return None
+
 def parkCodeAlerts(parkCode):
     q = parkCode
     api_url_base = 'https://developer.nps.gov/api/v1/alerts?parkCode='
@@ -316,20 +314,20 @@ def queryVisitorcenters(queryString):
         return None
 
 #alerts = getAlerts(alerts)
-print("Retrieved [Alerts]")
+#print("Retrieved [Alerts]")
 #articles = getAlerts(articles)
-print("Retrieved [Articles]")
+##print("Retrieved [Articles]")
 #campgrounds = getCampgrounds(campgrounds)
-print("Retrieved [Campgrounds]")
+#print("Retrieved [Campgrounds]")
 #events = getEvents(events)
-print("Retrieved [Events]")
+#print("Retrieved [Events]")
 #lessonPlans = getLessonPlans(lessonPlans)
-print("Retrieved [Lesson Plans]")
+#print("Retrieved [Lesson Plans]")
 #newsReleases = getNewsReleases(newsReleases)
-print("Retrieved [News Releases]")
+#print("Retrieved [News Releases]")
 parks = getParks(parks)
-print("Retrieved [Parks]")
+#print("Retrieved [Parks]")
 #people = getPeople(people)
-print("Retrieved [People]")
+#print("Retrieved [People]")
 #visitorCenters = getVisitorCenters(visitorCenters)
-print("Retrieved [Visitor Centers]")
+#print("Retrieved [Visitor Centers]")

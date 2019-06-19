@@ -50,7 +50,6 @@ def handler500(request):
 
 def home(request):
     form = HomeForm()
-    #print("Total Parks: ", parks['total'], parks['limit'])
     parksData = parks['data']
 
     #Oddly when retrieving data from the api by state, we are only given a list of 51 parks.
@@ -77,71 +76,20 @@ def home(request):
 def query(request):
     form = HomeForm(request.POST)
     text = ''
-    alertSearchData = []
-    articleSearchData = []
-    campgroundSearchData = []
-    eventSearchData = []
-    lessonplanSearchData = []
-    newsreleaseSearchData = []
-    parkSearchData = []
-    peopleSearchData = []
-    placeSearchData = []
-    visitorcenterSearchData = []
 
-    totalSearchAlerts = 0
-    totalSearchArticles = 0
-    totalSearchCampgrounds = 0
-    totalSearchEvents = 0
-    totalSearchLessonplans = 0
-    totalSearchNewsreleases = 0
-    totalSearchParks = 0
-    totalSearchPeople = 0
-    totalSearchPlaces = 0
-    totalSearchVisitorceters = 0
+    alertResults = queryAlerts(text)
+    articleResults = queryArticles(text)
+    campgroundResults = queryCampgrounds(text)
+    eventResults = queryEvents(text)
+    lessonplanResults = queryLessonplans(text)
+    newsreleaseResults = queryNewsreleases(text)
+    parkResults = queryParks(text)
+    peopleResults = queryPeople(text)
+    placeResults = queryPlaces(text)
+    visitorcentersResults = queryVisitorcenters(text)
 
     if(form.is_valid()):
         text = form.cleaned_data['search']
-
-        alertResults = queryAlerts(text)
-        totalSearchAlerts = alertResults['total']
-        alertSearchData = alertResults['data']
-
-        articleResults = queryArticles(text)
-        totalSearchArticles = articleResults['total']
-        articleSearchData = articleResults['data']
-
-        campgroundResults = queryCampgrounds(text)
-        totalSearchCampgrounds = campgroundResults['total']
-        campgroundSearchData = campgroundResults['data']
-
-        eventResults = queryEvents(text)
-        totalSearchEvents = eventResults['total']
-        eventSearchData = eventResults['data']
-
-        lessonplanResults = queryLessonplans(text)
-        totalSearchLessonplans = lessonplanResults['total']
-        lessonplanSearchData = lessonplanResults['data']
-
-        newsreleaseResults = queryNewsreleases(text)
-        totalSearchNewsreleases = newsreleaseResults['total']
-        newsreleaseSearchData = newsreleaseResults['data']
-
-        parkResults = queryParks(text)
-        totalSearchParks = parkResults['total']
-        parkSearchData = parkResults['data']
-
-        peopleResults = queryPeople(text)
-        totalSearchPeople = peopleResults['total']
-        peopleSearchData = peopleResults['data']
-
-        placeResults = queryPlaces(text)
-        totalSearchPlaces = placeResults['total']
-        placeSearchData = placeResults['data']
-
-        visitorcentersResults = queryVisitorcenters(text)
-        totalSearchVisitorceters = visitorcentersResults['total']
-        visitorcenterSearchData = visitorcentersResults['data']
-        pprint(visitorcenterSearchData)
 
     form = HomeForm()
 
@@ -149,35 +97,16 @@ def query(request):
         'form': form,
         'text': text,
 
-        'alertSearchData': alertSearchData,
-        'totalSearchAlerts': totalSearchAlerts,
-
-        'articleSearchData': articleSearchData,
-        'totalSearchArticles': totalSearchArticles,
-
-        'totalSearchCampgrounds': totalSearchCampgrounds,
-        'campgroundSearchData': campgroundSearchData,
-
-        'totalSearchEvents': totalSearchEvents,
-        'eventSearchData': eventSearchData,
-
-        'totalSearchLessonplans': totalSearchLessonplans,
-        'lessonplanSearchData': lessonplanSearchData,
-
-        'totalSearchNewsreleases': totalSearchNewsreleases,
-        'newsreleaseSearchData': newsreleaseSearchData,
-
-        'parkSearchData': parkSearchData,
-        'totalSearchParks': totalSearchParks,
-
-        'totalSearchPeople': totalSearchPeople,
-        'peopleSearchData': peopleSearchData,
-
-        'totalSearchPlaces': totalSearchPlaces,
-        'placeSearchData': placeSearchData,
-
-        'totalSearchVisitorcenters': totalSearchVisitorceters,
-        'visitorcenterSearchData': visitorcenterSearchData
+        'alertResults': alertResults,
+        'articleResults': articleResults,
+        'campgroundResults': campgroundResults,
+        'eventResults': eventResults,
+        'lessonplanResults': lessonplanResults,
+        'newsreleaseResults': newsreleaseResults,
+        'parkResults': parkResults,
+        'peopleResults': peopleResults,
+        'placeResults': placeResults,
+        'visitorcentersResults': visitorcentersResults
     }
     return render(request, 'NPSKiosk/query.html', context)
 
@@ -186,16 +115,10 @@ def state(request, stateCode):
 
     stateCodeUpper = stateCode.upper()
     statesLowAbbrev = [x.lower() for x in statesAbbrev]
-    # check first to make sure state arg is valid code else throw error code
+    # check first to make sure state arg is valid state code else throw error code
     state = states[statesLowAbbrev.index(stateCode)]
     parksData = parks['data']
-    print("Total Parks: ", parks['total'], parks['limit'])
-    count = 0
-    for park in parksData:
-        print(park['fullName'])
-        count = count+1
-    print("Count is ", count)
-    pprint(parks)
+
     #Park by State---------
     parksByState = []
     for park in parksData:
@@ -205,10 +128,6 @@ def state(request, stateCode):
 
     if(len(parksByState) == 0):
         parksByState = None
-    #print(parksByState)
-    #search = queryParks('Martin Luther')
-    #print(search)
-    #-----------
 
     context = {
         'form': form,

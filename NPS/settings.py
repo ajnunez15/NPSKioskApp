@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9mn0f#c!i#*i$&#bk%vxslga)xqw_gq)+c%+o5ns9rgdj9oxe3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #ALLOWED_HOSTS = ['https://npskiosk.herokuapp.com', '127.0.0.1']
 ALLOWED_HOSTS = ['.herokuapp.com']
