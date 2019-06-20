@@ -1,7 +1,5 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect
-from django.urls import reverse
-from .data import alerts, articles, campgrounds, events, lessonPlans
-from .data import newsReleases, parks, people, places, visitorCenters
+from django.shortcuts import render
+from .data import parks
 from .data import queryParks, queryAlerts, queryArticles, queryCampgrounds, queryEvents
 from .data import queryLessonplans, queryNewsreleases, queryPeople, queryPlaces, queryVisitorcenters
 from .data import parkCodeAlerts, parkCodeArticles, parkCodeEvents, parkCodeNewsreleases, parkCodeLessonplans
@@ -9,7 +7,6 @@ from .data import parkCodePeople, parkCodePlaces
 from .forms import HomeForm
 from pprint import pprint
 
-#pprint(campgrounds)
 states = ["Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado",
           "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho",
           "Illinois",
@@ -73,6 +70,7 @@ def home(request):
     }
     return render(request, 'NPSKiosk/index.html', context)
 
+#Data needed for when requesting needed data
 def query(request):
     form = HomeForm(request.POST)
     text = ''
@@ -110,6 +108,7 @@ def query(request):
     }
     return render(request, 'NPSKiosk/query.html', context)
 
+#Filters By State
 def state(request, stateCode):
     form = HomeForm()
 
@@ -122,7 +121,6 @@ def state(request, stateCode):
     #Park by State---------
     parksByState = []
     for park in parksData:
-        #print(stateCodeUpper, " in ", park['states'])
         if(stateCodeUpper in park['states']):
             parksByState.append(park)
 
@@ -137,6 +135,7 @@ def state(request, stateCode):
     }
     return render(request, 'NPSKiosk/state.html', context)
 
+#Shows User data upon selecting a destination
 def selected_destination(request, parkCode):
     '''form = HomeForm(request.POST)
     if(form.is_valid()):

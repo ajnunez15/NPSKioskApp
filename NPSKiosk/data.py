@@ -1,3 +1,5 @@
+#This file is to be used to manage National Park Service API Requests
+
 import requests
 import json
 import os

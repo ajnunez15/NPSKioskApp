@@ -27,9 +27,7 @@
 </head>
 
 <body>
-<div class="fullPage"><!--<div class="content-inside">-->
-  <!-- Navigation -->
-    <!--<div id="head">-->
+<div class="fullPage">
     <div id="main">
   <nav class="navbar navbar-expand-lg navbar-dark bg-black">
       <div class="header">
@@ -42,48 +40,17 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <!--<li class="nav-item active">
-            <a class="nav-link" href="{% url 'NPS-Home' %}">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>-->
         </ul>
         <form action="{% url 'NPS-Search' %}" class="form-inline my-2 my-lg-0" method="post">
             {% csrf_token %}
-          <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
            <p>{{ form.as_p }} <p>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
     </nav>
-    <!--</div>-->
-   <!-- <div class="wrapper" style="min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto 20%;">-->
 
   {% block content %}{% endblock %}
     </div>
-
-     <!--</div>-->
-    <!--<div class="push" style="height:20%"></div>-->
-    <!--</div>-->
-    <!--<div class="footer" style="height:20%"></div>-->
 </div>
 
 
@@ -95,19 +62,19 @@
         <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
           <ul class="list-inline mb-2">
             <li class="list-inline-item">
-              <a href="#">About</a>
+              <a href="https://www.nps.gov/aboutus/faqs.htm">About</a>
             </li>
             <li class="list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-              <a href="#">Contact</a>
+              <a href="https://www.nps.gov/aboutus/contact-form.htm?o=65B5E8848AD6ADB195A807AAEB37A5BD55D341804A&r=/aboutus/contactus.htm">Contact</a>
             </li>
             <li class="list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
+              <a href="https://www.nps.gov/aboutus/disclaimer.htm">Terms of Use</a>
             </li>
             <li class="list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
+              <a href="https://www.nps.gov/aboutus/privacy.htm">Privacy Policy</a>
             </li>
           </ul>
           <p class="text-muted small mb-4 mb-lg-0">&copy; Capital One MindSumo Challenge 2019.</p>
