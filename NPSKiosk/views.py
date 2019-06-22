@@ -5,7 +5,6 @@ from .data import queryLessonplans, queryNewsreleases, queryPeople, queryPlaces,
 from .data import parkCodeAlerts, parkCodeArticles, parkCodeEvents, parkCodeNewsreleases, parkCodeLessonplans
 from .data import parkCodePeople, parkCodePlaces
 from .forms import HomeForm
-from pprint import pprint
 
 states = ["Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado",
           "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho",
@@ -157,7 +156,7 @@ def selected_destination(request, parkCode):
     destLessonplans = parkCodeLessonplans(parkCode)
     destPeople = parkCodePeople(parkCode)
     destPlaces = parkCodePlaces(parkCode)
-    pprint(destNewsreleases)
+
     context = {
         'form': form,
         'destParkData': destParkData,
